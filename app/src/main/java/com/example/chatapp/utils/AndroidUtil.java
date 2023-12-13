@@ -6,8 +6,8 @@ import android.net.Uri;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+//import com.bumptech.glide.Glide;
+//import com.bumptech.glide.request.RequestOptions;
 import com.example.chatapp.model.UserModel;
 import com.google.firebase.firestore.auth.User;
 
@@ -34,7 +34,7 @@ public class AndroidUtil {
         return userModel;
     }
 
-    public static void setProfilePic(Context context, Uri imageUri, ImageView imageView){
-        Glide.with(context).load(imageUri).apply(RequestOptions.circleCropTransform()).into(imageView);
-    }
+//    public static void setProfilePic(Context context, Uri imageUri, ImageView imageView){
+//        Glide.with(context).load(imageUri).apply(RequestOptions.circleCropTransform()).into(imageView);
+//    }
 }

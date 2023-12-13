@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(FirebaseUtil.isLoggedIn()){
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this, SearchUserActivity.class));
                 }
                 else{
                     startActivity(new Intent(SplashActivity.this, LoginPhoneNumberActivity.class));

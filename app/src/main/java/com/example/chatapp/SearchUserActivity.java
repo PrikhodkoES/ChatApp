@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -13,6 +14,7 @@ import com.example.chatapp.model.UserModel;
 import com.example.chatapp.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SearchUserActivity extends AppCompatActivity {
 
@@ -48,6 +50,8 @@ public class SearchUserActivity extends AppCompatActivity {
             }
             setupSearchRecyclerView(searchTerm);
         });
+
+        getFCMToken();
     }
 
     void setupSearchRecyclerView(String searchTerm){
@@ -64,6 +68,17 @@ public class SearchUserActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
 
+    }
+
+    void getFCMToken(){
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                String token = task.getResult();
+                //FirebaseUtil.currentUserDetails().update("fcmToken",token);
+                FirebaseUtil.currentUserDetails().update("fcmToken", token);
+
+            }
+        });
     }
 
     @Override
